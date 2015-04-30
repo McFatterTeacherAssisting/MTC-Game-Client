@@ -1,0 +1,44 @@
+#game-area{
+	width:500px;
+	height:500px;
+}
+
+#game-display{
+	width:100%;
+	height:100%;
+	border:1px solid rgb(0, 0, 0);
+}
+
+.onscreen-message{
+	position:fixed;
+	width:500px;
+	height:250px;
+	max-height:500px;
+	top:50%;
+	left:50%;
+	transform:translateY(-50%) translateX(-50%);
+	-webkit-transform:translateY(-50%) translateX(-50%);
+	-moz-transform:translateY(-50%) translateX(-50%);
+	background:rgb(255, 255, 255);
+	background:rgba(255, 255, 255, .9);
+	border:1px solid rgb(0, 0, 0);
+	overflow:auto;
+	resize:both;
+
+}
+
+.onscreen-message .message-body{
+	width:100%;
+	max-height:90%;
+	word-wrap:break-word;
+	overflow-y:scroll;
+}
+
+.onscreen-message .message-title-area{
+	text-align:right;
+	font-size:30px;
+}
+
+#loaded-resources{
+	display:none;
+}

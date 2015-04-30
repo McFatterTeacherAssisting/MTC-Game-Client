@@ -1,0 +1,79 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>MTCGame</title>
+		<link type="text-css" rel="stylesheet" href="../css/style.css"></link>
+	</head>
+	<body>
+		<div id="game-area">
+			<canvas id="game-display">
+
+				<div class="onscreen-message">
+					<div class="message-title-area">
+						<span class="center">Your browser does not support this.</span>
+					</div>
+					<div class="message-body">
+						Your browser may not support the Canvas tag, try <a href="https://www.mozilla.org/en-US/firefox/all/">FireFox</a>.
+					</div>
+				</div>
+			</canvas>
+		</div>
+		<noscript>
+			<div class="onscreen-message">
+				<div class="message-title-area">
+					<span class="center">Javascript required.</span>
+				</div>
+				<div class="message-body">
+					<span>Javascript is required for this operation, your browser must be able to run it in order to use this game.<span>
+				</div>
+			</div>
+		</noscript>
+		<script type="text/javascript">
+			window.onload=function(){
+				var resourceHolder=document.getElementById("loaded-resources");
+				function loadImage(src){
+					var element=document.createElement("img");
+					resourceHolder.appendChild(element)
+					element.setAttribute("id", "i"+(new Date()).getTime());
+					element.setAttribute("src", src);
+					return element;
+				}
+				var canvasElement=document.getElementById("game-display");
+				window.canvas=canvasElement.getContext("2d");
+				canvas.drawImage(document.getElementById("test"), 0, 0);
+				canvas.fillRect(20, 20, 100, 100);
+				var image=loadImage("http://www.adomcc.com/tuxedo-brands-with-a-penguin-213.jpg");
+				image.onload=function(){
+					console.log("Loaded image "+image.src);
+					canvas.drawImage(image, 20, 20);
+				}
+				document.addEventListener("keydown", function(event){
+			        switch(event.keyCode){
+    	    	        case 37:{
+        	                player.moveLeft();
+            	            break;
+            		    }
+                		case 38:{
+                        	player.moveUp();
+							break;
+    	        	    }
+						case 40:{
+							player.moveDown();
+							break;
+						}
+						case 39:{
+							player.moveRight();
+							break;
+						}
+						default:{
+							console.log(String.fromCharCode(event.keyCode));
+						}
+    	    		}
+				})
+			}
+		</script>
+		<div id="loaded-resources">
+			<img id="test" src="http://images.sodahead.com/profiles/0/0/1/1/8/1/8/3/5/penguin-80403953281.jpeg">
+		</div>
+	</body>
+</html>
